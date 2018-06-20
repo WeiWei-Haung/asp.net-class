@@ -1,0 +1,93 @@
+﻿@model List<WebApplication1.Models.Orders>
+@{
+
+    WebApplication1.Models.Service.CustomerService customer = new WebApplication1.Models.Service.CustomerService();
+    ViewBag.Title = "Update";
+}
+
+
+@using (Html.BeginForm("UpdateAction", "Order", FormMethod.Post))
+{
+    <table border="1">
+        <tr>
+            <td>@Html.LabelFor(m => m[0].OrderID)</td>
+            <td>@Model[0].OrderID</td>
+            <td>@Html.ValidationMessageFor(m => m[0].OrderID)</td>
+
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m[0].CustomerID)</td>
+            <td>@Html.DropDownListFor(model => model[0].CustomerID, (List<SelectListItem>)ViewBag.customerService, "請選擇...")</td>
+            <td>@Html.ValidationMessageFor(m => m[0].CustomerID)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m[0].EmployeeID)</td>
+            <td>@Html.DropDownListFor(model => model[0].EmployeeID, (List<SelectListItem>)ViewBag.employeeService, "請選擇...")</td>
+            <td>@Html.ValidationMessageFor(m => m[0].CustomerID)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m[0].OrderDate)</td>
+            <td>@Html.TextBoxFor(m => m[0].OrderDate, new { Value = Model[0].OrderDate.HasValue ? Model[0].OrderDate.Value.ToString("yyyy/mm/dd") : "", type = "date", @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m[0].OrderDate)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m[0].RequiredDate)</td>
+            <td>@Html.TextBoxFor(m => m[0].RequiredDate, new { Value = Model[0].RequiredDate.HasValue ? Model[0].RequiredDate.Value.ToString("yyyy/mm/dd") : "", type = "date", @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m[0].RequiredDate)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m[0].ShippedDate)</td>
+            <td>@Html.TextBoxFor(m => m[0].ShippedDate, new { Value = Model[0].ShippedDate.HasValue ? Model[0].ShippedDate.Value.ToString("yyyy/mm/dd") : "", type = "date", @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m[0].ShippedDate)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m[0].ShipperID)</td>
+            <td>@Html.DropDownListFor(m => m[0].ShipperID, (List<SelectListItem>)ViewBag.shipperService, "請選擇...")</td>
+            <td>@Html.ValidationMessageFor(m => m[0].ShipperID)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m[0].Freight)</td>
+            <td>@Html.TextBoxFor(m => m[0].Freight)</td>
+            <td>@Html.ValidationMessageFor(m => m[0].Freight)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m[0].Freight)</td>
+            <td>@Html.TextBoxFor(m => m[0].Freight)</td>
+            <td>@Html.ValidationMessageFor(m => m[0].Freight)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m[0].ShipCountry)</td>
+            <td>@Html.TextBoxFor(m => m[0].ShipCountry)</td>
+            <td>@Html.ValidationMessageFor(m => m[0].ShipCountry)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m[0].ShipCity)</td>
+            <td>@Html.TextBoxFor(m => m[0].ShipCity)</td>
+            <td>@Html.ValidationMessageFor(m => m[0].ShipCity)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m[0].ShipRegion)</td>
+            <td>@Html.TextBoxFor(m => m[0].ShipRegion)</td>
+            <td>@Html.ValidationMessageFor(m => m[0].ShipRegion)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m[0].ShipPostalCode)</td>
+            <td>@Html.TextBoxFor(m => m[0].ShipPostalCode)</td>
+            <td>@Html.ValidationMessageFor(m => m[0].ShipPostalCode)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m[0].ShipAddress)</td>
+            <td>@Html.TextBoxFor(m => m[0].ShipAddress)</td>
+            <td>@Html.ValidationMessageFor(m => m[0].ShipAddress)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="存檔" /></td>
+        </tr>
+    </table>
+    <td><button>刪除此筆訂單</button></td>
+    <td><button>返回上一頁</button></td>
+
+}
+
+

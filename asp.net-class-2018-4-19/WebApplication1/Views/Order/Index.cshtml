@@ -1,0 +1,41 @@
+﻿@model WebApplication1.Models.Search
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("Search","Order",FormMethod.Post))
+{
+<td>@Html.LabelFor(a => a.OrderID)</td>
+<td>@Html.TextBoxFor(model => model.OrderID, new { type = "text", @class = "form-control" })</td>
+
+
+<td>@Html.LabelFor(a => a.CompanyName)</td>
+<td>@Html.TextBoxFor(model => model.CompanyName, new { type = "text", @class = "form-control" })</td>
+
+
+
+<td>@Html.LabelFor(model => model.EmployeeId)</td>
+<td>@Html.DropDownListFor(model => model.EmployeeId, (List<SelectListItem>)ViewBag.employeeService, "請選擇...")</td>
+
+<br>
+
+<td>@Html.LabelFor(model => model.ShipperID)</td>
+<td>@Html.DropDownListFor(model => model.ShipperID, (List<SelectListItem>)ViewBag.shipperService, "請選擇...")</td>
+
+<br>
+
+<td>@Html.LabelFor(a => a.OrderDate)</td>
+<td>@Html.TextBoxFor(model => model.OrderDate, new { type = "date", @class = "form-control" })</td>
+
+<td>@Html.LabelFor(a => a.RequiredDate)</td>
+<td>@Html.TextBoxFor(model => model.RequiredDate, new { type = "date", @class = "form-control" })</td>
+
+<td>@Html.LabelFor(a => a.ShippedDate)</td>
+<td>@Html.TextBoxFor(model => model.ShippedDate, new { type = "date", @class = "form-control" })</td>
+<input type="submit" value="查詢" />
+<input type="reset" value="清除"/>
+<button onclick="location.href='@Url.Action("InsertOrder","Order")'; return false">新增訂單</button>
+
+    
+}

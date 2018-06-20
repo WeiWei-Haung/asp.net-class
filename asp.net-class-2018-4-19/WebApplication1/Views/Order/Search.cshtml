@@ -1,0 +1,35 @@
+﻿@model List<WebApplication1.Models.Orders>
+@{
+    ViewBag.Title = "Search結果";
+    WebApplication1.Models.Service.CustomerService customer = new WebApplication1.Models.Service.CustomerService();
+}
+
+<h2>@ViewBag.Title</h2>
+<table border="1">
+    <tr>
+        <td align="center">@Html.LabelFor(m => m[0].OrderID)</td>
+        <td align="center">@Html.LabelFor(m => m[0].CustomerID)</td>
+        <td align="center">@Html.LabelFor(m => m[0].OrderDate)</td>
+        <td align="center">@Html.LabelFor(m => m[0].ShippedDate)</td>
+        <td align="center">@Html.LabelFor(m => m[0].Freight)</td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    @foreach (var a in Model)
+    {
+
+        <tr>
+            <td align="center">@a.OrderID </td>
+            <td align="center">@customer.GetCustomerList() </td>
+            <td align="center">@a.OrderDate.Value.ToString("yyyy/MM/dd") </td>
+            <td align="center">@a.ShippedDate </td>
+            <td align="center">@a.Freight </td>
+            <td align="center">@Html.ActionLink("修改", "Update", new { Controller = "Order",orderID = @a.OrderID })</td>
+            <td align="center">@Html.ActionLink("刪除", "Delete", new { Controller = "Order", orderID = @a.OrderID })</td>
+        </tr>
+
+    }
+    <tr></tr>
+</table>
+<button>回查詢頁</button>
